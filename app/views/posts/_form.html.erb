@@ -1,0 +1,58 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subject %><br>
+    <%= f.text_area :content %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+$(document).ready(function(){
+$("#new_post").submit(function(){
+          // var returnValue = true;
+          var name = $("#post_name").val();
+          var title = $("#post_title").val();
+          var subject = $("#register_content").val();
+          
+          if(name =="" || title == "" || subject == "" )
+          {
+            alert ("please fill all details ")
+            return false
+          }
+          else
+          {
+            return true
+          }
+
+
+  //       rules: {
+  //   name: {
+  //     required: true,
+  //     maxlength: 4
+  //   }
+  // }
+});
+ 
+});
+</script>
